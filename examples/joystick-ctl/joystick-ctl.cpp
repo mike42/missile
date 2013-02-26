@@ -23,6 +23,7 @@ void gotEvent(struct js_event e, bool *finalEvent) {
 				break;
 			case 1:
 				*finalEvent = true;
+				finished = true;
 				launcher -> stop();
 				break;
 		}
