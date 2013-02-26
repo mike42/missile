@@ -6,9 +6,15 @@
 Missile :: Missile(libusb_device_handle* launcherHandle) {
 	observeLimits = true;
 	async = true;
+	state_expires = false;	
+
 	handle = launcherHandle;
 	libusb_detach_kernel_driver(handle, 0);
 	libusb_claim_interface(handle, 0);
+
+	/* Initialise to a stopped state */
+	state = ML_STOP;
+	ml_set_state(state);
 }
 
 /**
@@ -25,7 +31,8 @@ Missile :: ~Missile() {
  */
 void Missile :: set_state(unsigned char cmd, long expiry) {
 	/* Time calculation if necessary */
-	if(state_expires = expiry > 0) {
+	state_expires = (expiry > 0);
+	if(state_expires) {
 		/* Figure out a timespec object for when this will expire */
 		long ns = (expiry * 1000000) % 1000000000;
 		long sec = expiry / 1000;
