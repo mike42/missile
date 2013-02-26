@@ -13,7 +13,8 @@ bool finished;
 /**
  * Fired on every joystick event
  */
-bool gotEvent(struct js_event e) {
+void gotEvent(struct js_event e, bool *finalEvent) {
+	*finalEvent = false;
 	/* Handle button inputs only. Directional movement is polled. */
 	if(e.type == JS_EVENT_BUTTON && e.value == 1) {
 		switch(e.number) {
@@ -21,12 +22,11 @@ bool gotEvent(struct js_event e) {
 				launcher -> fire();
 				break;
 			case 1:
-				finished = true;
+				*finalEvent = true;
 				launcher -> stop();
-				return false;
+				break;
 		}
 	}
-	return true;
 }
 
 /**
