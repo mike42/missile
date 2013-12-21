@@ -39,6 +39,9 @@ void followJoystick(Joystick* input, Missile *newLauncher) {
 	cout << "input stopped\n";
 }
 
+/**
+ * USB code and main loop
+ */
 int main() {
 	uint16_t vendor_id = 0x0a81;
 	uint16_t product_id = 0x0701;
