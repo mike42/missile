@@ -13,9 +13,9 @@ Modifying this code for the later launchers would be quite simple, so lodge an i
 Howto
 -----
 
-First you need libusb1.0 On Debian this is the libusb-1.0-0-dev package:
+First you need libusb1.0 and ncurses. On Debian the packes are:
 
-        apt-get install libusb-1.0-0-dev
+        apt-get install libusb-1.0-0-dev libncurses-dev
 
 Now compile:
 

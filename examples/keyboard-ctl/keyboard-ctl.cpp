@@ -89,7 +89,7 @@ int main() {
 	noecho();
 	keypad(stdscr, TRUE);
 	cbreak(); // Unbuffered input
-	printw("Use UP, DOWN, LEFT, RIGHT to operate the launcher, SPACE to fire,\nRETURN to quit.\n");
+	printw("Use UP, DOWN, LEFT, RIGHT (or WASD) to aim the launcher, SPACE to fire,\nRETURN to stop, Q or ESC to quit.\n");
 
 	/* Initialise Missile object and get input in another thread */
 	Missile *launcher = new Missile(launcherHandle);
