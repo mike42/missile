@@ -98,10 +98,12 @@ void Missile :: ml_set_state(unsigned char cmd) {
  *  Move the launcher (or set it in any state, actually) for a given duration, or -1 to leave it in the state.
  */
 void Missile :: move(unsigned char direction, long duration) {
+	device_mutex.lock();
 	set_state(direction, duration);
 	if(!async) {
 		wait();
 	}
+	device_mutex.unlock();
 }
 
 /**
@@ -112,16 +114,19 @@ void Missile :: move(unsigned char direction) {
 }
 
 void Missile :: fire() {
+	device_mutex.lock();
 	set_state(ML_FIRE, ML_FIRE_TIME);
 	if(!async) {
 		wait();
 	}
+	device_mutex.unlock();
 }
 
 /**
  * Stop any movement or firing which is taking place
  */
 void Missile :: stop() {
+	device_mutex.lock();
 	if(state == ML_FIRE) {
 		/* The launcher wont stop from firing, so flick through a short move */
 		ml_set_state(ML_UP);
@@ -129,6 +134,7 @@ void Missile :: stop() {
 	ml_set_state(ML_STOP);
 	state = ML_STOP;
 	state_expires = false;
+	device_mutex.unlock();
 }
 
 /**

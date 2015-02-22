@@ -1,5 +1,6 @@
 #include <libusb-1.0/libusb.h>
 #include <iostream>
+#include <mutex>
 #include <unistd.h>
 #include <time.h>
 
@@ -37,6 +38,7 @@ class Missile {
 		bool observeLimits;
 
 	private:
+		std::mutex device_mutex;
 		void wait();
 		void set_state(unsigned char cmd);
 		void set_state(unsigned char cmd, long expiry);
