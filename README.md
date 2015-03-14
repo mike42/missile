@@ -3,6 +3,7 @@ This code provides a userspace USB driver for linux users with a DreamCheeky mis
 The two example programs included are:
 - basic-sync -- A minimal demonstration of how to interact with the "missile" class. This moves and fires the launcher according to a hardcoded set of commands.
 - joystick-ctl -- Allows you to use a joystick to move and fire the launcher.
+- keyboard-ctl -- Allows you to use the keyboard to move and fire the launcher.
 
 Supported launchers
 -------------------
@@ -13,9 +14,13 @@ Modifying this code for the later launchers would be quite simple, so lodge an i
 Howto
 -----
 
-First you need libusb1.0 and ncurses. On Debian the packes are:
+First you need libusb1.0 and ncurses. On Debian the packages are:
 
         apt-get install libusb-1.0-0-dev libncurses-dev
+
+Or on RedHat
+
+		yum install libusb1-devel libncurses5-devel
 
 Now compile:
 
