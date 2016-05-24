@@ -1,3 +1,6 @@
+USB missile launcher library [![Build Status](https://travis-ci.org/mike42/missile.svg?branch=master)](https://travis-ci.org/mike42/missile)
+===
+
 This code provides a userspace USB driver for linux users with a DreamCheeky missile launcher.
 
 The two example programs included are:
