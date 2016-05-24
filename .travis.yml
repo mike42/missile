@@ -1,10 +1,14 @@
 langauge: cpp
-
-sudo: true
-
-install:
-  - sudo apt-get install libusb-1.0-0-dev g++-4.8
-
+sudo: false
 script:
   - make
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
+    - clang
+    - libusb-1.0-0-dev
 
