@@ -1,4 +1,4 @@
-GPP=g++-4.8
+GPP=g++
 
 default:
 	mkdir -p bin
